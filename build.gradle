@@ -42,6 +42,10 @@ dependencies {
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
+
 
 eclipse {
 	classpath {
