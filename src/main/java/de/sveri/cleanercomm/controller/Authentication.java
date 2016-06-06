@@ -8,7 +8,7 @@ public class Authentication {
 	
 	@RequestMapping("/login")
 	public String home(){
-		return "home/index";
+		return "login/login";
 	}
 
 }
