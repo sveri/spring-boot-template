@@ -15,7 +15,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().
 		antMatchers("/").permitAll().
-		antMatchers("/admin").hasRole("ADMIN").
+		antMatchers("/admin").hasRole("Admin").
 		antMatchers("/login").permitAll().anyRequest().fullyAuthenticated().and().formLogin()
 				.loginPage("/login").failureUrl("/login?error").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).and().exceptionHandling()
