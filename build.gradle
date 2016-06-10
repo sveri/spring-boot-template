@@ -34,6 +34,7 @@ dependencies {
 	compile('org.projectlombok:lombok:1.16.6')
 	compile('org.springframework.boot:spring-boot-starter-mail')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.security.oauth:spring-security-oauth2')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	
@@ -43,6 +44,10 @@ dependencies {
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+	testCompile('org.seleniumhq.selenium:selenium-java:2.53.0')
+	testCompile('org.seleniumhq.selenium:selenium-htmlunit-driver:2.52.0')
+	
+	testCompile 'com.codeborne:selenide:3.6'
 }
 
 task wrapper(type: Wrapper) {
