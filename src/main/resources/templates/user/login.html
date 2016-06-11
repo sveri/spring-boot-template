@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+<head>
+<title>LOGIN</title>
+</head>
+<body>
+    <div layout:fragment="container">
+
+        <form class="form-signin" th:action="@{/login}" th:object="${user}" action="/login" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            
+            <div class="alert alert-danger" th:if="${param.error}">
+                Email and password is incorrect or your account is not activated, please try again.
+            </div>
+            <input type="text" id="inputEmail" name="username" class="form-control top" placeholder="Username or Email" required="required" autofocus="autofocus"/>
+            <input type="password" id="inputPassword" name="password" class="form-control bottom" placeholder="Password" required="required"/>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember-me"/> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+
+
+    </div>
+</body>
+</html>

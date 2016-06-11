@@ -1,12 +1,33 @@
-security:
-  oauth2:
-    client:
-      clientId: 233668646673605
-      clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
-      accessTokenUri: https://graph.facebook.com/oauth/access_token
-      userAuthorizationUri: https://www.facebook.com/dialog/oauth
-      tokenName: oauth_token
-      authenticationScheme: query
-      clientAuthenticationScheme: form
-    resource:
-      userInfoUri: https://graph.facebook.com/me
+app:
+  url: http://localhost:8080
+  secret: fljijwernl34lk23j4KWDFLJjknfaskdfjlk34
+  user:
+    verification: false
+    root: users/
+  email:
+    from: sveri80@gmail.com
+    support: sveri80@gmail.com
+    url: http://localhost:8080
+  environment: DEV
+  spring:
+    thymeleaf:
+      mode: HTML5
+      cache: "false"
+    datasource:
+      url: jdbc:h2:file:~/spring-starter
+      username: sa
+      password: sa
+      driver-class-name: org.h2.Driver
+    jpa:
+      show-sql: "true"
+      hibernate:
+        ddl-auto: update
+    mail:
+      host: localhost
+      default-encoding: UTF-8
+  logging:
+    file: default.log
+    level:
+      org:
+        springframework:
+          jdbc: DEBUG
