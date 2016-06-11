@@ -1,4 +1,4 @@
-package de.sveri.cleanercomm;
+package de.sveri.cleanercomm.adapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +13,7 @@ import de.sveri.cleanercomm.service.UserService;
 
 @Configuration
 //@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
+public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
