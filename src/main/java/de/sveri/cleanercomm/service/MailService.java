@@ -2,7 +2,6 @@ package de.sveri.cleanercomm.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -21,7 +20,6 @@ public class MailService {
     @Value("${app.email.support}")
     private String supportEmail;
     
-//    @Autowired 
     private MailSender mailSender;
     
     public void sendMail(String to, String subject, String text) {

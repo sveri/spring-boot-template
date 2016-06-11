@@ -22,7 +22,6 @@ import de.sveri.cleanercomm.service.MailService;
 import de.sveri.cleanercomm.service.UserService;
 
 @Controller
-// @RequestMapping("/user/*")
 public class UserController {
     private Logger log = LoggerFactory.getLogger(UserController.class);
     
