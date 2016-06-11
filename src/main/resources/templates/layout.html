@@ -38,7 +38,8 @@
 					<ul>
 						<li><a href="/">Menu</a>
 							<ul>
-								<li><a href="#">Profil</a></li>
+								<li><a th:href="@{/user/edit/0}">Profil</a></li>
+<!-- 								<li><a th:href="@{/user/edit/{userid}(userid=${currentUser.username})}">Profil</a></li> -->
 								<li><a th:href="@{/logout}">Log out</a></li>
 							</ul></li>
 					</ul>

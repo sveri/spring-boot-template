@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
 <head>
-<title>LOGIN</title>
+<title>Login</title>
 </head>
 <body>
     <div layout:fragment="container">
@@ -20,6 +20,7 @@
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <a th:href="@{/user/register}" class="btn btn-lg btn-primary btn-block" role="button">Register</a>
         </form>
 
 

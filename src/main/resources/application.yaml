@@ -2,13 +2,12 @@ app:
   url: http://localhost:8080
   secret: fljijwernl34lk23j4KWDFLJjknfaskdfjlk34
   user:
-    verification: false
+    verification: "false"
     root: users/
   email:
     from: sveri80@gmail.com
     support: sveri80@gmail.com
     url: http://localhost:8080
-  environment: DEV
   spring:
     thymeleaf:
       mode: HTML5
@@ -31,3 +30,4 @@ app:
       org:
         springframework:
           jdbc: DEBUG
+          
