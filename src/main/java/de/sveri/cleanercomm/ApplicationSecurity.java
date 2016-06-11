@@ -22,9 +22,14 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/**").authorizeRequests()
-		.antMatchers("/", "/login**").permitAll()
-		.anyRequest().authenticated();
+		http.antMatcher("/**").authorizeRequests().anyRequest()
+        .authenticated().and().csrf()
+        .disable()
+        .logout().logoutUrl("/logout").permitAll()
+        .logoutSuccessUrl("/");
+//		http.antMatcher("/**").authorizeRequests()
+//		.antMatchers("/", "/login**").permitAll()
+//		.anyRequest().authenticated();
 	}
 
 //	@Override

@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 
 //@Order(Ordered.HIGHEST_PRECEDENCE)
-@Configuration
+//@Configuration
 public class AuthenticationSecurity extends GlobalAuthenticationConfigurerAdapter {
 
 	@Override
