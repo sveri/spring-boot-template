@@ -7,13 +7,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 
 //@Order(Ordered.HIGHEST_PRECEDENCE)
-@Configuration
-public class AuthenticationSecurity extends GlobalAuthenticationConfigurerAdapter {
-
-	@Override
-	public void init(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN", "USER").and().withUser("user")
-				.password("user").roles("USER");
-	}
-
-}
+//@Configuration
+//public class AuthenticationSecurity extends GlobalAuthenticationConfigurerAdapter {
+//
+//	@Override
+//	public void init(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN", "USER").and().withUser("user")
+//				.password("user").roles("USER");
+//	}
+//
+//}
