@@ -24,6 +24,9 @@ public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.antMatcher("/**").authorizeRequests()
+		.antMatchers("/apilogin**").permitAll()
+		.antMatchers("/api/**").permitAll()
+//		.antMatchers("/api/test**").permitAll()
 		.antMatchers("/user/register").permitAll()
         .antMatchers("/user/activate").permitAll()
         .antMatchers("/user/activation-send").permitAll()
@@ -39,7 +42,8 @@ public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
 	        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
 	    .and()
 	        .rememberMe().key(applicationSecret)
-	        .tokenValiditySeconds(31536000);
+	        .tokenValiditySeconds(31536000)
+	     .and().csrf().ignoringAntMatchers("/api**");
 	}
 	
     
