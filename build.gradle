@@ -40,6 +40,9 @@ dependencies {
 	
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE')
 	
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+
+	
 	runtime('com.h2database:h2')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 

@@ -20,7 +20,7 @@ app:
     jpa:
       show-sql: "true"
       hibernate:
-        ddl-auto: create
+        ddl-auto: update
     mail:
       host: localhost
       default-encoding: UTF-8

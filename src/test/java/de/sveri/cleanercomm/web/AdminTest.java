@@ -11,10 +11,10 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.sveri.cleanercomm.CleanercommApplication;
+import de.sveri.cleanercomm.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CleanercommApplication.class)
+@SpringApplicationConfiguration(classes = Application.class)
 @WebIntegrationTest(value = "server.port=9090")
 public class AdminTest {
 
