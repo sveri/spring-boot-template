@@ -34,17 +34,7 @@ public class User {
     
     private String role = "ROLE_USER";
     
-    private String firstName;
-    
-    private String lastName;
-    
-    private String address;
-    
-    private String companyName;
-    
     private String lastLogin;
-    
-    private String profilePicture;
     
     public Long getId() {
         return id;
@@ -102,38 +92,6 @@ public class User {
         this.role = role;
     }
     
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
     public String getLastLogin() {
         return lastLogin;
     }
@@ -142,14 +100,6 @@ public class User {
         this.lastLogin = lastLogin;
     }
     
-    public String getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
-    }
-
     public Boolean isAdmin() {
         return this.role.equals("ROLE_ADMIN");
     }

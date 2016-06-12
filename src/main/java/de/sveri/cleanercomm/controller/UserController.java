@@ -177,11 +177,7 @@ public class UserController {
         }
         user.setId(u.getId());
         user.setUserName(u.getUserName());
-        user.setAddress(u.getAddress());
-        user.setCompanyName(u.getCompanyName());
         user.setEmail(u.getEmail());
-        user.setFirstName(u.getFirstName());
-        user.setLastName(u.getLastName());
         
         return "/user/edit";
     }

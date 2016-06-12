@@ -154,11 +154,7 @@ public class UserService implements UserDetailsService {
     public void updateUser(String userName, User newData) {
         this.repo.updateUser(
                 userName, 
-                newData.getEmail(), 
-                newData.getFirstName(), 
-                newData.getLastName(), 
-                newData.getAddress(), 
-                newData.getCompanyName());
+                newData.getEmail());
     }
     
     public User getLoggedInUser() {
@@ -177,9 +173,5 @@ public class UserService implements UserDetailsService {
     
     public void updateLastLogin(String userName) {
         this.repo.updateLastLogin(userName);
-    }
-
-    public void updateProfilePicture(User user, String profilePicture) {
-        this.repo.updateProfilePicture(user.getUserName(), profilePicture);
     }
 }
