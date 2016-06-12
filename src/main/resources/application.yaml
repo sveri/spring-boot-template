@@ -1,4 +1,6 @@
 app:
+  jwt:
+    secretKey: glcngfnxvlmbcb3m45rtnbfia990hbuiansernuzipmbzufgns
   url: http://localhost:8080
   secret: fljijwernl34lk23j4KWDFLJjknfaskdfjlk34
   user:
