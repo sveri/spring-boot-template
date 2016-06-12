@@ -163,6 +163,10 @@ public class UserController {
     
     @RequestMapping("/user/edit/{id}")
     public String edit(@PathVariable("id") Long id, User user) {
+    	if(userService.getLoggedInUser() == null){
+    		return "redirect:/login";
+    	}
+    	
         User u;
         User loggedInUser = userService.getLoggedInUser();
         if(id == 0) {
