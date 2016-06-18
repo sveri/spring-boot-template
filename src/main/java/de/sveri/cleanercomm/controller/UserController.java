@@ -59,45 +59,60 @@ public class UserController {
     public String register(User user) {
         return "user/register";
     }
-    
-    @RequestMapping(value = "/user/register", method = RequestMethod.POST)
-    public String registerPost(@Valid User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "user/register";
-        }
-        
-        User registeredUser = userService.register(user);
-        if (registeredUser != null) {
-           mailService.sendNewRegistration(user.getEmail(), registeredUser.getToken());
-            if(!requireActivation) {
-                userService.autoLogin(user.getUserName());
-                return "redirect:/";
-            }
-            return "user/register-success";
-        } else {
-            log.error("User already exists: " + user.getUserName());
-            result.rejectValue("email", "error.alreadyExists", "This username or email already exists, please try to reset password instead.");
-            return "user/register";
-        }
-    }
+
+	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
+	public String registerPost(@Valid User user, BindingResult result) {
+		if (result.hasErrors()) {
+			return "user/register";
+		}
+
+		User registeredUser = userService.register(user);
+		if (registeredUser != null) {
+			try {
+				mailService.sendNewRegistration(user.getEmail(), registeredUser.getToken());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.rejectValue("email", "error.GenericEmailError",
+						"Some error occured while sending mail, please contact support.");
+				return "user/register";
+			}
+			if (!requireActivation) {
+				userService.autoLogin(user.getUserName());
+				return "redirect:/";
+			}
+			return "user/register-success";
+		} else {
+			log.error("User already exists: " + user.getUserName());
+			result.rejectValue("email", "error.alreadyExists",
+					"This username or email already exists, please try to reset password instead.");
+			return "user/register";
+		}
+	}
     
     @RequestMapping(value = "/user/reset-password")
     public String resetPasswordEmail(User user) {
         return "user/reset-password";
     }
-    
-    @RequestMapping(value = "/user/reset-password", method = RequestMethod.POST)
-    public String resetPasswordEmailPost(User user, BindingResult result) {
-        User u = userRepository.findOneByEmail(user.getEmail());
-        if(u == null) {
-            result.rejectValue("email", "error.doesntExist", "We could not find this email in our databse");
-            return "user/reset-password";
-        } else {
-            String resetToken = userService.createResetPasswordToken(u, true);
-            mailService.sendResetPassword(user.getEmail(), resetToken);
-        }
-        return "user/reset-password-sent";
-    }
+
+	@RequestMapping(value = "/user/reset-password", method = RequestMethod.POST)
+	public String resetPasswordEmailPost(User user, BindingResult result) {
+		User u = userRepository.findOneByEmail(user.getEmail());
+		if (u == null) {
+			result.rejectValue("email", "error.doesntExist", "We could not find this email in our databse");
+			return "user/reset-password";
+		} else {
+			String resetToken = userService.createResetPasswordToken(u, true);
+			try {
+				mailService.sendResetPassword(user.getEmail(), resetToken);
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.rejectValue("email", "error.GenericEmailError",
+						"Some error occured while sending mail, please contact support.");
+				return "user/reset-password";
+			}
+		}
+		return "user/reset-password-sent";
+	}
 
     @RequestMapping(value = "/user/reset-password-change")
     public String resetPasswordChange(User user, BindingResult result, Model model) {
@@ -125,18 +140,25 @@ public class UserController {
     public ModelAndView activationSend(User user) {
         return new ModelAndView("/user/activation-send");
     }
-    
-    @RequestMapping(value = "/user/activation-send", method = RequestMethod.POST)
-    public ModelAndView activationSendPost(User user, BindingResult result) {
-        User u = userService.resetActivation(user.getEmail());
-        if(u != null) {
-            mailService.sendNewActivationRequest(u.getEmail(), u.getToken());
-            return new ModelAndView("/user/activation-sent");
-        } else {
-            result.rejectValue("email", "error.doesntExist", "We could not find this email in our databse");
-            return new ModelAndView("/user/activation-send");
-        }
-    }
+
+	@RequestMapping(value = "/user/activation-send", method = RequestMethod.POST)
+	public ModelAndView activationSendPost(User user, BindingResult result) {
+		User u = userService.resetActivation(user.getEmail());
+		if (u != null) {
+			try {
+				mailService.sendNewActivationRequest(u.getEmail(), u.getToken());
+			} catch (Exception e) {
+				e.printStackTrace();
+				result.rejectValue("email", "error.GenericEmailError",
+						"Some error occured while sending mail, please contact support");
+				return new ModelAndView("/user/activation-send");
+			}
+			return new ModelAndView("/user/activation-sent");
+		} else {
+			result.rejectValue("email", "error.doesntExist", "We could not find this email in our database");
+			return new ModelAndView("/user/activation-send");
+		}
+	}
     
     @RequestMapping("/user/delete")
     public String delete(Long id) {
