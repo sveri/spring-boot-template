@@ -25,6 +25,7 @@ import lombok.extern.apachecommons.CommonsLog;;
 @Service
 @CommonsLog
 public class UserService implements UserDetailsService {
+	
     @Value("${app.user.verification}")
     private Boolean requireActivation;
     
@@ -84,9 +85,15 @@ public class UserService implements UserDetailsService {
     }
     
     
-    public String encodeUserPassword(String password) {
+    public static String encodeUserPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode(password);
+    }
+    
+    
+    public static boolean matchesPassword(String rawPassword, String encodedPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
     
     public Boolean delete(Long id) {

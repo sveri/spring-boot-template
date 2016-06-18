@@ -1,4 +1,6 @@
 app:
+  jwt:
+    secretKey: glcngfnxvlmbcb3m45rtnbfia990hbuiansernuzipmbzufgns
   url: http://localhost:8080
   secret: ${random.value}
   user:
