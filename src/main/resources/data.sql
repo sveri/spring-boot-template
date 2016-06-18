@@ -1,2 +1,2 @@
-INSERT INTO USER (user_name, password, email, role) 
-VALUES ('sveri', '$2a$10$kqiR5kJ926hUW1LD.FzShe8VDdThDP0Pp6KDeu3M1A.FjF4xiomlS', 'sveri@sveri.de', 'ROLE_ADMIN');
+INSERT INTO users (id, user_name, password, email, role) 
+VALUES (1, 'admin', '$2a$10$1rb2WfWjvLpkxn7/JsnfF.uyA9yBF5XNUn.lzflSR5jjhBHwOdXmy', 'historify@sveri.de', 'ROLE_ADMIN');
