@@ -1,6 +1,6 @@
 app:
   url: http://localhost:8080
-  secret: fljijwernl34lk23j4KWDFLJjknfaskdfjlk34
+  secret: ${random.value}
   user:
     verification: "false"
     root: users/

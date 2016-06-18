@@ -1,5 +1,6 @@
 package de.sveri.cleanercomm.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ public class User {
     
     @NotNull
     @Size(min = 3, max = 100, message = "Username must at least 3 characters.")
+    @Column(unique = true)
     private String userName;
     
     @NotNull
@@ -31,6 +33,7 @@ public class User {
     
     @Email(message = "Email address is not valid.")
     @NotNull
+    @Column(unique = true)
     private String email;
     
     private String token;
