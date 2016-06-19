@@ -20,6 +20,10 @@ body > .container {
     background-color: #f5f5f5;
 }
 
+.footer > .container {
+	padding-top: 22px;
+}
+
 
 nav ul {
   list-style: none;

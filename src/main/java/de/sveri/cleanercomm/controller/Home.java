@@ -10,5 +10,10 @@ public class Home {
 	public String home(){
 		return "home/index";
 	}
+	
+	@RequestMapping("/about")
+	public String about(){
+		return "home/about";
+	}
 
 }
