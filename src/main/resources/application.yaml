@@ -13,16 +13,16 @@ app:
   spring:
     thymeleaf:
       mode: HTML5
-      cache: "false"
-    datasource:
-      url: jdbc:h2:file:~/spring-starter
-      username: sa
-      password: sa
-      driver-class-name: org.h2.Driver
+      cache: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/foobar
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
     jpa:
       show-sql: "true"
       hibernate:
-        ddl-auto: update
+        ddl-auto: none
     mail:
       host: localhost
       default-encoding: UTF-8

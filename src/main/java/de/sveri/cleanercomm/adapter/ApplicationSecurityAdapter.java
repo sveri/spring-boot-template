@@ -12,7 +12,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import de.sveri.cleanercomm.service.UserService;
 
 @Configuration
-//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -26,6 +25,7 @@ public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/**").authorizeRequests()
 		.antMatchers("/").permitAll()
 		.antMatchers("/about").permitAll()
+		.antMatchers("/dataprivacypolicy").permitAll()
 		.antMatchers("/apilogin**").permitAll()
 		.antMatchers("/api/**").permitAll()
 		.antMatchers("/user/register").permitAll()
@@ -44,7 +44,7 @@ public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
 	    .and()
 	        .rememberMe().key(applicationSecret)
 	        .tokenValiditySeconds(31536000)
-	     .and().csrf().ignoringAntMatchers("/api**");
+		     .and().csrf().ignoringAntMatchers("/api**", "/api/**");
 	}
 	
     

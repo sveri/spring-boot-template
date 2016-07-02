@@ -9,7 +9,8 @@ html {
 }
 
 body > .container {
-    padding: 60px 15px 0;
+    padding: 60px 15px 70px;
+    width: 1300px;
 }
 
 .footer {
@@ -24,6 +25,9 @@ body > .container {
 	padding-top: 22px;
 }
 
+.footer > .container > a {
+	margin-right: 20px;
+}
 
 nav ul {
   list-style: none;
