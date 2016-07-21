@@ -5,31 +5,29 @@ app:
   secret: ${random.value}
   user:
     verification: "false"
-    root: users/
   email:
     from: sveri80@gmail.com
     support: sveri80@gmail.com
     url: http://localhost:8080
-  spring:
-    thymeleaf:
-      mode: HTML5
-      cache: false
+spring:
+  thymeleaf:
+    mode: HTML5
+    cache: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/foobar
+    url: jdbc:postgresql://localhost:5432/historify
     username: postgres
     password: postgres
-    driver-class-name: org.postgresql.Driver
-    jpa:
-      show-sql: "true"
-      hibernate:
-        ddl-auto: none
-    mail:
-      host: localhost
-      default-encoding: UTF-8
+    driver-class-name: org.postgresql.Driver  
+  jpa:
+    show-sql: "true"
+    hibernate:
+      ddl-auto: none
+  mail:                                                                                                                                                  
+    host: localhost
+  
   logging:
     file: default.log
     level:
       org:
         springframework:
           jdbc: DEBUG
-          
