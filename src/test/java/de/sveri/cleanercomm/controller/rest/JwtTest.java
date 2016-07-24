@@ -24,8 +24,6 @@ public class JwtTest extends RestAssuredConfig {
 
 	@Test
 	public void invalidJwtToken() throws Exception {
-//		BrowserLink link = new BrowserLink();
-//		link.setDescription("desc");
 		Sample s = new Sample();
 		s.setS("foobar");
 		given().header("Authorization", "foobar").contentType(MediaType.APPLICATION_JSON)
@@ -35,6 +33,13 @@ public class JwtTest extends RestAssuredConfig {
 		given().header("Authorization", JwtHelper.BEARER + " some_token").contentType(MediaType.APPLICATION_JSON)
 				.body(s, ObjectMapperType.JACKSON_2).when().post(API_BROWSERLINK).then().assertThat()
 				.statusCode(401);
+	}
+	
+	@Test
+	public void onlyBearerString() throws Exception {
+		given().header("Authorization", JwtHelper.BEARER).contentType(MediaType.APPLICATION_JSON)
+		.when().post(API_BROWSERLINK).then().assertThat()
+		.statusCode(401);
 	}
 
 }
