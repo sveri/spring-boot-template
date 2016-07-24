@@ -12,6 +12,10 @@ public class JwtHelper {
 	@Getter
 	private String secretKey;
 	
+	public static final String BEARER = "Bearer "; 
+	
+	public static final String AUTHORIZATION = "Authorization";
+	
 	public JwtHelper(){}
 
 	public String getSubject(String token) {

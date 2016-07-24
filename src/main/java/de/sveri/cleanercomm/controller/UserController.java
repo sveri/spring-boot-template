@@ -28,9 +28,6 @@ public class UserController {
     @Value("${app.user.verification}")
     private Boolean requireActivation;
     
-    @Value("${app.user.root}")
-    private String userRoot;
-    
     @Autowired
     private UserRepository userRepository;
 

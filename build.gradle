@@ -51,6 +51,7 @@ dependencies {
 	testCompile('org.seleniumhq.selenium:selenium-htmlunit-driver:2.52.0')
 	
 	testCompile 'com.codeborne:selenide:3.6'
+	testCompile 'io.rest-assured:rest-assured:3.0.0'
 }
 
 task wrapper(type: Wrapper) {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.sveri.cleanercomm.controller.exception.InvalidLoginException;
 import de.sveri.cleanercomm.entity.User;
 import de.sveri.cleanercomm.entity.UserRepository;
 import de.sveri.cleanercomm.helper.JwtHelper;
@@ -30,22 +31,17 @@ public class Login {
 	
 	@RequestMapping(value = "apilogin", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody final UserLogin login)
-        throws ServletException {
+        throws ServletException, InvalidLoginException {
 		
-		User user = userRep.findOneByUserNameOrEmail(login.name, login.name);
+		User user = userRep.findOneByUserNameOrEmail(login.getName(), login.getName());
 		
-        if (user == null || !UserService.matchesPassword(login.password, user.getPassword())) {
-            throw new ServletException("Invalid login");
+        if (user == null || !UserService.matchesPassword(login.getPassword(), user.getPassword())) {
+			throw new InvalidLoginException();
         }
         
-        return new LoginResponse(Jwts.builder().setSubject(login.name)
+        return new LoginResponse(Jwts.builder().setSubject(login.getName())
                 .claim("roles", user.getRole()).setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, jwtHelper.getSecretKey()).compact());
-    }
-
-    private static class UserLogin {
-        public String name;
-        public String password;
     }
 
     @SuppressWarnings("unused")
