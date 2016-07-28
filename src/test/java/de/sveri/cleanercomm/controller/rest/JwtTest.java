@@ -11,7 +11,6 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.sveri.cleanercomm.Application;
-//import de.sveri.cleanercomm.entity.BrowserLink;
 import de.sveri.cleanercomm.helper.JwtHelper;
 import io.restassured.mapper.ObjectMapperType;
 
